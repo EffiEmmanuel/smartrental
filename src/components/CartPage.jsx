@@ -14,7 +14,7 @@ function CartPage() {
   const navigate = useNavigate();
 
   // Placeholder for login state
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <>
@@ -128,7 +128,7 @@ function CartPage() {
                   <Title level={4}>Login to my account</Title>
                   <Text>If you are a returning customer, log in now</Text>
 
-                  <Button style={{ backgroundColor: "orange" }}>Log in</Button>
+                  <Button style={{ backgroundColor: "orange" }} onClick={()=>{setIsLoggedIn(true)}}>Log in</Button>
                 </Col>
                 <Col
                   lg={{ span: 12 }}
