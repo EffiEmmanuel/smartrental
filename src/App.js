@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import NavBar from "./components/NavBar.jsx";
 import Hero from "./components/Hero.jsx";
@@ -7,6 +8,8 @@ import { Col, Row } from "antd";
 import bus from "./Images/bus.jpg";
 import airplane from "./Images/airplane.jpg";
 import train from "./Images/train.jpg";
+import Text from "antd/es/typography/Text.js";
+import Title from "antd/es/typography/Title.js";
 
 function App() {
   return (
@@ -14,42 +17,176 @@ function App() {
       <NavBar />
       <Hero />
 
-      {/* //   <Row
-    //     style={{
-    //       marginTop: "10px",
-    //       width: "100%",
-    //     }}
-    //     gutter={[5, 5]}
-    //   >
-    //     <Col lg={{ span: 6 }} style={{ height: "100px" }}>
-    //       <img
-    //         src={carInterior1}
-    //         alt=""
-    //         style={{ objectFit: "cover", width: "100%", height: "100%" }}
-    //       />
-    //     </Col>
-    //     <Col lg={{ span: 6 }} style={{ height: "100px" }}>
-    //       <img
-    //         src={carInterior2}
-    //         alt=""
-    //         style={{ objectFit: "cover", width: "100%", height: "100%" }}
-    //       />
-    //     </Col>
-    //     <Col lg={{ span: 6 }} style={{ height: "100px" }}>
-    //       <img
-    //         src={carInterior3}
-    //         alt=""
-    //         style={{ objectFit: "cover", width: "100%", height: "100%" }}
-    //       />
-    //     </Col>
-    //     <Col lg={{ span: 6 }} style={{ height: "100px" }}>
-    //       <img
-    //         src={carInterior4}
-    //         alt=""
-    //         style={{ objectFit: "cover", width: "100%", height: "100%" }}
-    //       />
-    //     </Col>
-    //   </Row> */}
+      <div style={{ marginTop: "20px", padding: "50px" }}>
+        <Row>
+          <Title level={3}>Other products</Title>
+        </Row>
+        <Row
+          style={{
+            width: "100%",
+            display: "flex",
+            gap: "10px",
+            overflowX: "scroll",
+          }}
+        >
+          <Col
+            style={{
+              height: "200px",
+              width: "300px",
+              backgroundImage: `url(${bus})`,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              padding: "10px",
+              position: "relative",
+            }}
+          >
+            <div style={{ position: "relative", zIndex: 4 }}>
+              <Title
+                level={4}
+                style={{
+                  color: "white",
+                }}
+              >
+                25% OFF
+              </Title>
+              <Text style={{ color: "white" }}>On Bus Booking</Text>
+            </div>
+
+            {/* overlay */}
+            <div
+              style={{
+                backgroundColor: "black",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                width: "100%",
+                height: "100%",
+                opacity: "20%",
+                zIndex: 2,
+              }}
+            ></div>
+          </Col>
+          <Col
+            style={{
+              height: "200px",
+              width: "300px",
+              backgroundImage: `url(${airplane})`,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              padding: "10px",
+              position: "relative",
+            }}
+          >
+            <div style={{ position: "relative", zIndex: 4 }}>
+              <Title
+                level={4}
+                style={{
+                  color: "white",
+                }}
+              >
+                25% OFF
+              </Title>
+              <Text style={{ color: "white" }}>On Flight Booking</Text>
+            </div>
+
+            {/* overlay */}
+            <div
+              style={{
+                backgroundColor: "black",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                width: "100%",
+                height: "100%",
+                opacity: "20%",
+                zIndex: 2,
+              }}
+            ></div>
+          </Col>
+          <Col
+            style={{
+              height: "200px",
+              width: "300px",
+              backgroundImage: `url(${train})`,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              padding: "10px",
+              position: "relative",
+            }}
+          >
+            <div style={{ position: "relative", zIndex: 4 }}>
+              <Title
+                level={4}
+                style={{
+                  color: "white",
+                }}
+              >
+                25% OFF
+              </Title>
+              <Text style={{ color: "white" }}>On Train Booking</Text>
+            </div>
+
+            {/* overlay */}
+            <div
+              style={{
+                backgroundColor: "black",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                width: "100%",
+                height: "100%",
+                opacity: "20%",
+                zIndex: 2,
+              }}
+            ></div>
+          </Col>
+          <Col
+            style={{
+              height: "200px",
+              width: "300px",
+              backgroundImage: `url(${bus})`,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              padding: "10px",
+              position: "relative",
+            }}
+          >
+            <div style={{ position: "relative", zIndex: 4 }}>
+              <Title
+                level={4}
+                style={{
+                  color: "white",
+                }}
+              >
+                25% OFF
+              </Title>
+              <Text style={{ color: "white" }}>On Bus Booking</Text>
+            </div>
+
+            {/* overlay */}
+            <div
+              style={{
+                backgroundColor: "black",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                width: "100%",
+                height: "100%",
+                opacity: "20%",
+                zIndex: 2,
+              }}
+            ></div>
+          </Col>
+        </Row>
+      </div>
     </>
   );
 }
