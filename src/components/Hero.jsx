@@ -144,22 +144,33 @@ const Hero = () => {
             }}
             gutter={[5, 5]}
           >
-          {listOfImages.map((image)=>
-            <Col lg={{ span: 6 }} style={{ height: "100px" }}>
-            <img
-              onClick={()=>{handleCurrentImg(image.src)}}
-              src={image.src}
-              alt={image.name}
-              style={{ objectFit: "cover", width: "100%", height: "100%",cursor:"pointer" }}
-            />
-            </Col>      
-          )
-          }
-
+            {listOfImages.map((image) => (
+              <Col lg={{ span: 6 }} style={{ height: "100px" }}>
+                <img
+                  onClick={() => {
+                    handleCurrentImg(image.src);
+                  }}
+                  src={image.src}
+                  alt={image.name}
+                  style={{
+                    objectFit: "cover",
+                    width: "100%",
+                    height: "100%",
+                    cursor: "pointer",
+                  }}
+                />
+              </Col>
+            ))}
           </Row>
 
           {/* Car Description */}
-          <Row>
+          <Row
+            style={{
+              justifyContent: "space-between",
+              alignItems: "flex-end",
+              width: "100%",
+            }}
+          >
             <Col>
               <Title level={3}>Audi Q3</Title>
               <div
@@ -176,10 +187,11 @@ const Hero = () => {
                 <Text>/ per day</Text>
               </div>
             </Col>
+
+            <Link to={"/cart"}>
+              <Button>Go to Cart</Button>
+            </Link>
           </Row>
-              <Link to={"/cart"}>
-                <Button >Go to Cart</Button>
-              </Link>
         </Row>
       </Col>
     </Row>
