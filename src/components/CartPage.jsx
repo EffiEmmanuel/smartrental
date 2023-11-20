@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row } from "antd";
+import { Button, Col, Row } from "antd";
 import Text from "antd/es/typography/Text.js";
 import Title from "antd/es/typography/Title.js";
 import { CaretLeft } from "@phosphor-icons/react";
@@ -97,16 +97,48 @@ function CartPage() {
           <Col
             lg={{ span: 12 }}
             md={{ span: 24 }}
-            style={{ border: ".3px solid gray" }}
+            style={{
+              border: ".3px solid gray",
+              padding: "10px",
+              display: "flex",
+              alignItems: "center",
+            }}
           >
-            <Row>
+            <Row
+              style={{
+                // height: "60%",
+                width: "100%",
+              }}
+            >
               <Col
                 lg={{ span: 12 }}
                 md={{ span: 24 }}
-                style={{ textAlign: "center" }}
+                style={{
+                  textAlign: "center",
+                  padding: "10px",
+                  backgroundColor: "#FAFAFA",
+                  height: "100%",
+                }}
               >
                 <Title level={4}>Login to my account</Title>
                 <Text>If you are a returning customer, log in now</Text>
+
+                <Button style={{ backgroundColor: "orange" }}>Log in</Button>
+              </Col>
+              <Col
+                lg={{ span: 12 }}
+                md={{ span: 24 }}
+                style={{
+                  textAlign: "center",
+                  padding: "10px",
+                  backgroundColor: "#FAFAFA",
+                  height: "100%",
+                }}
+              >
+                <Title level={4}>Sign up</Title>
+                <Text>Create an account for extra convenience and benefit</Text>
+
+                <Button style={{ backgroundColor: "orange" }}>Sign up</Button>
               </Col>
             </Row>
           </Col>
