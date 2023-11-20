@@ -1,184 +1,114 @@
 import React from "react";
 import { Col, Row } from "antd";
-
-// Images
-import bus from "../Images/bus.jpg";
-import airplane from "../Images/airplane.jpg";
-import train from "../Images/train.jpg";
 import Text from "antd/es/typography/Text.js";
 import Title from "antd/es/typography/Title.js";
-import Navbar from "./NavBar";
+import { CaretLeft } from "@phosphor-icons/react";
+import { useNavigate } from "react-router-dom";
+import { CalendarBlank } from "@phosphor-icons/react/dist/ssr";
+
+// Images
+import car from "../Images/car.jpg";
 
 function CartPage() {
+  const navigate = useNavigate();
   return (
     <>
-      <div style={{ marginTop: "20px", padding: "50px" }}>
-        <Row>
-          <Title level={3}>Other products</Title>
-        </Row>
-        <Row
+      <div
+        style={{
+          marginTop: "20px",
+          padding: "50px",
+          backgroundColor: "#FBF4E8",
+          minHeight: "100vh",
+        }}
+      >
+        <div
+          onClick={() => navigate("/")}
           style={{
-            width: "100%",
             display: "flex",
-            gap: "10px",
-            overflowX: "scroll",
+            alignItems: "center",
+            gap: "1px",
+            cursor: "pointer",
           }}
         >
-          <Col
-            style={{
-              height: "200px",
-              width: "300px",
-              backgroundImage: `url(${bus})`,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-end",
-              padding: "10px",
-              position: "relative",
-            }}
-          >
-            <div style={{ position: "relative", zIndex: 4 }}>
-              <Title
-                level={4}
-                style={{
-                  color: "white",
-                }}
-              >
-                25% OFF
-              </Title>
-              <Text style={{ color: "white" }}>On Bus Booking</Text>
+          <CaretLeft size={20} color="black" />
+          <Text>Go back</Text>
+        </div>
+
+        <Row
+          style={{
+            backgroundColor: "white",
+            padding: "20px",
+            marginTop: "10px",
+            borderRadius: "10px",
+          }}
+          gutter={[20, 20]}
+        >
+          <Col lg={{ span: 12 }} md={{ span: 24 }}>
+            <div
+              onClick={() => navigate("/")}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "1px",
+                cursor: "pointer",
+              }}
+            >
+              <CaretLeft size={20} color="#E8C78E" />
+              <Text style={{ color: "#E8C78E" }}>Appointment Select</Text>
             </div>
 
-            {/* overlay */}
-            <div
+            <Row>
+              <Col>
+                <Title level={3}>
+                  In-Person: 20MIN Initial Styling % Hire Consultation - with
+                  Stylist
+                </Title>
+                <Title
+                  level={3}
+                  style={{ color: "#E8C78E", marginTop: "-6px" }}
+                >
+                  Cloth and Confeti
+                </Title>
+              </Col>
+            </Row>
+
+            <Row style={{ gap: "10px" }}>
+              <CalendarBlank size={20} color="#E8C78E" />
+              <Text style={{ fontWeight: "bold" }}>Time and Date</Text>
+              <Text>1:30AM(CET) on Wednesday November 15th, 2023</Text>
+            </Row>
+            <Row
               style={{
-                backgroundColor: "black",
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
                 width: "100%",
-                height: "100%",
-                opacity: "20%",
-                zIndex: 2,
+                display: "flex",
+                gap: "10px",
+                overflowX: "scroll",
+                marginTop: "10px",
               }}
-            ></div>
+            >
+              <img
+                src={car}
+                alt=""
+                style={{ height: "200px", width: "100%", objectFit: "cover" }}
+              />
+            </Row>
           </Col>
-          <Col
-            style={{
-              height: "200px",
-              width: "300px",
-              backgroundImage: `url(${airplane})`,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-end",
-              padding: "10px",
-              position: "relative",
-            }}
-          >
-            <div style={{ position: "relative", zIndex: 4 }}>
-              <Title
-                level={4}
-                style={{
-                  color: "white",
-                }}
-              >
-                25% OFF
-              </Title>
-              <Text style={{ color: "white" }}>On Flight Booking</Text>
-            </div>
 
-            {/* overlay */}
-            <div
-              style={{
-                backgroundColor: "black",
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                width: "100%",
-                height: "100%",
-                opacity: "20%",
-                zIndex: 2,
-              }}
-            ></div>
-          </Col>
           <Col
-            style={{
-              height: "200px",
-              width: "300px",
-              backgroundImage: `url(${train})`,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-end",
-              padding: "10px",
-              position: "relative",
-            }}
+            lg={{ span: 12 }}
+            md={{ span: 24 }}
+            style={{ border: ".3px solid gray" }}
           >
-            <div style={{ position: "relative", zIndex: 4 }}>
-              <Title
-                level={4}
-                style={{
-                  color: "white",
-                }}
+            <Row>
+              <Col
+                lg={{ span: 12 }}
+                md={{ span: 24 }}
+                style={{ textAlign: "center" }}
               >
-                25% OFF
-              </Title>
-              <Text style={{ color: "white" }}>On Train Booking</Text>
-            </div>
-
-            {/* overlay */}
-            <div
-              style={{
-                backgroundColor: "black",
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                width: "100%",
-                height: "100%",
-                opacity: "20%",
-                zIndex: 2,
-              }}
-            ></div>
-          </Col>
-          <Col
-            style={{
-              height: "200px",
-              width: "300px",
-              backgroundImage: `url(${bus})`,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-end",
-              padding: "10px",
-              position: "relative",
-            }}
-          >
-            <div style={{ position: "relative", zIndex: 4 }}>
-              <Title
-                level={4}
-                style={{
-                  color: "white",
-                }}
-              >
-                25% OFF
-              </Title>
-              <Text style={{ color: "white" }}>On Bus Booking</Text>
-            </div>
-
-            {/* overlay */}
-            <div
-              style={{
-                backgroundColor: "black",
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                width: "100%",
-                height: "100%",
-                opacity: "20%",
-                zIndex: 2,
-              }}
-            ></div>
+                <Title level={4}>Login to my account</Title>
+                <Text>If you are a returning customer, log in now</Text>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </div>
