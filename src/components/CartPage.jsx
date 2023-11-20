@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Row } from "antd";
 import Text from "antd/es/typography/Text.js";
 import Title from "antd/es/typography/Title.js";
 import { CaretLeft } from "@phosphor-icons/react";
 import { useNavigate } from "react-router-dom";
 import { CalendarBlank } from "@phosphor-icons/react/dist/ssr";
+import Switch from "react-switch";
 
 // Images
 import car from "../Images/car.jpg";
 
 function CartPage() {
   const navigate = useNavigate();
+
+  // Placeholder for login state
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
   return (
     <>
       <div
@@ -104,43 +109,214 @@ function CartPage() {
               alignItems: "center",
             }}
           >
-            <Row
-              style={{
-                // height: "60%",
-                width: "100%",
-              }}
-            >
-              <Col
-                lg={{ span: 12 }}
-                md={{ span: 24 }}
+            {!isLoggedIn ? (
+              <Row
                 style={{
-                  textAlign: "center",
-                  padding: "10px",
-                  backgroundColor: "#FAFAFA",
-                  height: "100%",
+                  // height: "60%",
+                  width: "100%",
                 }}
               >
-                <Title level={4}>Login to my account</Title>
-                <Text>If you are a returning customer, log in now</Text>
+                <Col
+                  lg={{ span: 12 }}
+                  md={{ span: 24 }}
+                  style={{
+                    textAlign: "center",
+                    padding: "10px",
+                    backgroundColor: "#FAFAFA",
+                  }}
+                >
+                  <Title level={4}>Login to my account</Title>
+                  <Text>If you are a returning customer, log in now</Text>
 
-                <Button style={{ backgroundColor: "orange" }}>Log in</Button>
-              </Col>
-              <Col
-                lg={{ span: 12 }}
-                md={{ span: 24 }}
+                  <Button style={{ backgroundColor: "orange" }}>Log in</Button>
+                </Col>
+                <Col
+                  lg={{ span: 12 }}
+                  md={{ span: 24 }}
+                  style={{
+                    textAlign: "center",
+                    padding: "10px",
+                    backgroundColor: "#FAFAFA",
+                  }}
+                >
+                  <Title level={4}>Sign up</Title>
+                  <Text>
+                    Create an account for extra convenience and benefit
+                  </Text>
+
+                  <Button style={{ backgroundColor: "orange" }}>Sign up</Button>
+                </Col>
+              </Row>
+            ) : (
+              <Row
                 style={{
-                  textAlign: "center",
-                  padding: "10px",
-                  backgroundColor: "#FAFAFA",
-                  height: "100%",
+                  // height: "60%",
+                  width: "100%",
                 }}
               >
-                <Title level={4}>Sign up</Title>
-                <Text>Create an account for extra convenience and benefit</Text>
+                <Col
+                  lg={{ span: 12 }}
+                  md={{ span: 24 }}
+                  style={{
+                    padding: "10px",
+                    border: "1px solid #C1C1C1",
+                  }}
+                >
+                  <Title level={4} style={{ padding: "0", margin: "0" }}>
+                    Welcome back, Joel van Amerongen
+                  </Title>
+                  <Text>Check your details below and place your order</Text>
 
-                <Button style={{ backgroundColor: "orange" }}>Sign up</Button>
-              </Col>
-            </Row>
+                  <Row
+                    style={{
+                      padding: "5px",
+                      backgroundColor: "#C1C1C1",
+                      border: "1px solid #0000CA",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "5px",
+                      }}
+                    >
+                      <Title level={4} style={{ margin: "0", padding: "0" }}>
+                        Joel van Amerongen
+                      </Title>
+                      <Text style={{ color: "gray" }}>Straat 123</Text>
+                      <Text style={{ color: "gray" }}>1234RE Leiden</Text>
+                      <Text style={{ color: "gray" }}>
+                        joel-test@vanamerongen.eu
+                      </Text>
+                    </div>
+                  </Row>
+                  <Text style={{ color: "gray" }}>
+                    To place your order you must first agree to the terms and
+                    conditions below:
+                  </Text>
+                  <Text
+                    style={{
+                      color: "gray",
+                      display: "block",
+                      textAlign: "center",
+                    }}
+                  >
+                    Download legal information
+                  </Text>
+
+                  <Row style={{ alignItems: "center", marginTop: "10px" }}>
+                    <label
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "3px",
+                      }}
+                    >
+                      <Switch
+                        onChange={() => {}}
+                        checked={() => {}}
+                        checkedIcon={false}
+                        width={40}
+                        height={20}
+                      />
+                      <span>Agreement with the payment obligation</span>
+                    </label>
+                  </Row>
+
+                  <Row style={{ alignItems: "center", marginTop: "10px" }}>
+                    <label
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "3px",
+                      }}
+                    >
+                      <Switch
+                        onChange={() => {}}
+                        checked={() => {}}
+                        checkedIcon={false}
+                        width={40}
+                        height={20}
+                      />
+                      <span>Agreement with the payment obligation</span>
+                    </label>
+                  </Row>
+                </Col>
+                <Col
+                  lg={{ span: 12 }}
+                  md={{ span: 24 }}
+                  style={{
+                    padding: "10px",
+                    border: "1px solid #C1C1C1",
+                    display: "flex",
+                    flexDirection: "column",
+
+                    gap: "15px",
+                  }}
+                >
+                  <Row
+                    style={{
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Text>Total rental</Text>
+                    <Text>$ 50.00</Text>
+                  </Row>
+                  <Row
+                    style={{
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Text>Total security deposit</Text>
+                    <Text>$ 100.00</Text>
+                  </Row>
+                  <Row
+                    style={{
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Text>Total VAT (21%)</Text>
+                    <Text>$ 10.50</Text>
+                  </Row>
+
+                  <div>
+                    <hr />
+                  </div>
+
+                  <Row
+                    style={{
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    <Text>Total</Text>
+                    <Text>$ 160.50</Text>
+                  </Row>
+
+                  <Text style={{ color: "gray" }}>
+                    I understand that whenplacing this order I enter into a
+                    payment obligation
+                  </Text>
+
+                  <Button
+                    style={{
+                      width: "100%",
+                      height: "40px",
+                      backgroundColor: "#4096ff",
+                      color: "#fff",
+                      borderRadius: "20px",
+                    }}
+                  >
+                    Order Now
+                  </Button>
+                </Col>
+              </Row>
+            )}
           </Col>
         </Row>
       </div>
