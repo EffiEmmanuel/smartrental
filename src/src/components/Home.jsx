@@ -4,14 +4,13 @@ import { Row, Col, Typography, Button, DatePicker } from "antd";
 // Images
 import backgroundImage from "../Images/background.webp";
 import carImage from "../Images/car.jpg";
-import carInterior1 from "../Images/car-interior1.jpg";
-import carInterior2 from "../Images/car-interior2.jpg";
-import carInterior3 from "../Images/car-interior3.jpg";
-import carInterior4 from "../Images/car-interior4.jpg";
+import bus from "../Images/bus.jpg";
+import airplane from "../Images/airplane.jpg";
+import train from "../Images/train.jpg";
 
 const { Title, Text } = Typography;
 
-const Hero = () => {
+const Home = () => {
   const [selectedDate, setSelectedDate] = useState();
   const [selectedTime, setSelectedTime] = useState();
   const [selectDateTime, setSelectDateTime] = useState();
@@ -19,11 +18,7 @@ const Hero = () => {
   const datetimearray = [
     {
       date: "2023-11-12",
-      timeslots: [
-        { time: "01:00-02:00", available: true },
-        { time: "02:00-03:00", available: true },
-        { time: "03:00-04:00", available: false },
-      ],
+      available: false,
     },
     {
       date: "2023-11-13",
@@ -47,11 +42,6 @@ const Hero = () => {
       setSelectDateTime(selectedTimeSlot);
     }
   }, [selectedDate, selectedTime]);
-
-  // Handle availability
-  useEffect(() => {
-    // Make API call to get availabiity?
-  }, [selectedDate]);
 
   return (
     <Row
@@ -114,7 +104,7 @@ const Hero = () => {
             />
           </Col>
           <Col span={24}>
-            <Button type="primary" style={{ width: "100%", height: "45px" }}>
+            <Button  style={{ width: "100%", backgroundColor: "#1677ff", color: "white", height: "45px" }}>
               Search Time slots
             </Button>
           </Col>
@@ -130,7 +120,7 @@ const Hero = () => {
             />
           </div>
 
-          <Row
+          {/* <Row
             style={{
               marginTop: "10px",
               width: "100%",
@@ -165,7 +155,165 @@ const Hero = () => {
                 style={{ objectFit: "cover", width: "100%", height: "100%" }}
               />
             </Col>
-          </Row>
+          </Row> */}
+                  <Row
+          style={{
+            width: "100%",
+            display: "flex",
+            gap: "10px",
+            overflowX: "scroll",
+          }}
+        >
+          <Col
+            style={{
+              height: "200px",
+              width: "300px",
+              backgroundImage: `url(${bus})`,
+              backgroundPosition: 'cover',
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              padding: "10px",
+              position: "relative",
+            }}
+          >
+            <div style={{ position: "relative", zIndex: 4 }}>
+              <Title
+                level={4}
+                style={{
+                  color: "white",
+                }}
+              >
+                25% OFF
+              </Title>
+              <Text style={{ color: "white" }}>On Bus Booking</Text>
+            </div>
+            <div
+              style={{
+                backgroundColor: "black",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                width: "100%",
+                height: "100%",
+                opacity: "20%",
+                zIndex: 2,
+              }}
+            ></div>
+          </Col>
+          <Col
+            style={{
+              height: "200px",
+              width: "300px",
+              backgroundImage: `url(${airplane})`,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              padding: "10px",
+              position: "relative",
+            }}
+          >
+            <div style={{ position: "relative", zIndex: 4 }}>
+              <Title
+                level={4}
+                style={{
+                  color: "white",
+                }}
+              >
+                25% OFF
+              </Title>
+              <Text style={{ color: "white" }}>On Flight Booking</Text>
+            </div>
+            <div
+              style={{
+                backgroundColor: "black",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                width: "100%",
+                height: "100%",
+                opacity: "20%",
+                zIndex: 2,
+              }}
+            ></div>
+          </Col>
+          <Col
+            style={{
+              height: "200px",
+              width: "300px",
+              backgroundImage: `url(${train})`,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              padding: "10px",
+              position: "relative",
+            }}
+          >
+            <div style={{ position: "relative", zIndex: 4 }}>
+              <Title
+                level={4}
+                style={{
+                  color: "white",
+                }}
+              >
+                25% OFF
+              </Title>
+              <Text style={{ color: "white" }}>On Train Booking</Text>
+            </div>
+            <div
+              style={{
+                backgroundColor: "black",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                width: "100%",
+                height: "100%",
+                opacity: "20%",
+                zIndex: 2,
+              }}
+            ></div>
+          </Col>
+          <Col
+            style={{
+              height: "200px",
+              width: "300px",
+              backgroundImage: `url(${bus})`,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              padding: "10px",
+              position: "relative",
+            }}
+          >
+            <div style={{ position: "relative", zIndex: 4 }}>
+              <Title
+                level={4}
+                style={{
+                  color: "white",
+                }}
+              >
+                25% OFF
+              </Title>
+              <Text style={{ color: "white" }}>On Bus Booking</Text>
+            </div>
+            <div
+              style={{
+                backgroundColor: "black",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                width: "100%",
+                height: "100%",
+                opacity: "20%",
+                zIndex: 2,
+              }}
+            ></div>
+          </Col>
+        </Row>
 
           {/* Car Description */}
           <Row>
@@ -192,4 +340,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Home;
