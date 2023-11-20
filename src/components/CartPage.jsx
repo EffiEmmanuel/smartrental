@@ -16,6 +16,10 @@ function CartPage() {
   // Placeholder for login state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // Agreement states
+  const [isPaymentObligation, setIsPaymentObligation] = useState(false);
+  const [isTermsAndConditions, setIsTermsAndConditions] = useState(false);
+
   return (
     <>
       <div
@@ -128,7 +132,14 @@ function CartPage() {
                   <Title level={4}>Login to my account</Title>
                   <Text>If you are a returning customer, log in now</Text>
 
-                  <Button style={{ backgroundColor: "orange" }} onClick={()=>{setIsLoggedIn(true)}}>Log in</Button>
+                  <Button
+                    style={{ backgroundColor: "orange" }}
+                    onClick={() => {
+                      setIsLoggedIn(true);
+                    }}
+                  >
+                    Log in
+                  </Button>
                 </Col>
                 <Col
                   lg={{ span: 12 }}
@@ -214,9 +225,10 @@ function CartPage() {
                       }}
                     >
                       <Switch
-                        onChange={() => {}}
-                        checked={() => {}}
+                        onChange={(value) => setIsPaymentObligation(value)}
+                        checked={isPaymentObligation}
                         checkedIcon={false}
+                        uncheckedIcon={false}
                         width={40}
                         height={20}
                       />
@@ -233,9 +245,10 @@ function CartPage() {
                       }}
                     >
                       <Switch
-                        onChange={() => {}}
-                        checked={() => {}}
+                        onChange={(value) => setIsTermsAndConditions(value)}
+                        checked={isTermsAndConditions}
                         checkedIcon={false}
+                        uncheckedIcon={false}
                         width={40}
                         height={20}
                       />
