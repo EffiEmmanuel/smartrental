@@ -1,57 +1,63 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Row, Col, Typography, Button, DatePicker } from "antd";
+import { Link } from "react-router-dom";
 
-// Images
 import backgroundImage from "../Images/background.webp";
 import carImage from "../Images/car.jpg";
 import carInterior1 from "../Images/car-interior1.jpg";
 import carInterior2 from "../Images/car-interior2.jpg";
 import carInterior3 from "../Images/car-interior3.jpg";
-import carInterior4 from "../Images/car-interior4.jpg";
 
 const { Title, Text } = Typography;
 
 const Hero = () => {
-  const [selectedDate, setSelectedDate] = useState();
-  const [selectedTime, setSelectedTime] = useState();
-  const [selectDateTime, setSelectDateTime] = useState();
+  const [currentSrcImg, setCurrentSrcImg] = useState(carImage);
+  const [selectedDate, setSelectedDate] = useState(null);
 
-  const datetimearray = [
+  const listOfImages = [
+    { src: carImage, name: "Chevrolet" },
+    { src: carInterior1, name: "Interior" },
+    { src: carInterior2, name: "Lorem" },
+    { src: carInterior3, name: "Ipsum" },
+  ];
+
+  const dateTimeArray = [
     {
       date: "2023-11-12",
-      timeslots: [
-        { time: "01:00-02:00", available: true },
-        { time: "02:00-03:00", available: true },
-        { time: "03:00-04:00", available: false },
-      ],
+      available: true,
     },
     {
       date: "2023-11-13",
-      timeslots: [
-        { time: "01:00-02:00", available: true },
-        { time: "02:00-03:00", available: true },
-        { time: "03:00-04:00", available: false },
-      ],
+      available: true,
+    },
+    {
+      date: "2023-11-26",
+      available: false,
+    },
+    {
+      date: "2023-12-15",
+      available: false,
     },
   ];
 
-  useEffect(() => {
-    const selectedDateTime = datetimearray.find(
-      (item) => item.date === selectedDate
+  const handleCurrentImg = (params) => {
+    setCurrentSrcImg(params);
+  };
+
+  const disabledDate = (current) => {
+    // Disable past dates
+    if (current && current < new Date()) {
+      return true;
+    }
+
+    // Disable dates marked as unavailable
+    const formattedCurrentDate = current.format("YYYY-MM-DD");
+    const matchingDate = dateTimeArray.find(
+      (date) => date.date === formattedCurrentDate
     );
 
-    if (selectedDateTime) {
-      const selectedTimeSlot = selectedDateTime.timeslots.find(
-        (slot) => slot.time === selectedTime
-      );
-      setSelectDateTime(selectedTimeSlot);
-    }
-  }, [selectedDate, selectedTime]);
-
-  // Handle availability
-  useEffect(() => {
-    // Make API call to get availabiity?
-  }, [selectedDate]);
+    return matchingDate ? !matchingDate.available : false;
+  };
 
   return (
     <Row
@@ -60,7 +66,6 @@ const Hero = () => {
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         minHeight: "100vh",
-        // display: "flex",
         padding: "50px",
         marginLeft: 0,
         marginRight: 0,
@@ -95,7 +100,8 @@ const Hero = () => {
                 color: "white",
                 caretColor: "white",
               }}
-              onChange={(date) => setSelectedDate(date.format("YYYY-MM-DD"))}
+              onChange={(date) => setSelectedDate(date)}
+              disabledDate={disabledDate}
             />
           </Col>
           <Col span={12}>
@@ -110,7 +116,8 @@ const Hero = () => {
                 color: "white",
                 caretColor: "white",
               }}
-              onChange={(date) => setSelectedTime(date.format("YYYY-MM-DD"))}
+              onChange={(date) => setSelectedDate(date)}
+              disabledDate={disabledDate}
             />
           </Col>
           <Col span={24}>
@@ -124,7 +131,7 @@ const Hero = () => {
         <Row style={{ backgroundColor: "white", padding: "20px" }}>
           <div style={{ height: "280px", width: "100%" }}>
             <img
-              src={carImage}
+              src={currentSrcImg}
               alt=""
               style={{ objectFit: "cover", width: "100%", height: "100%" }}
             />
@@ -137,34 +144,18 @@ const Hero = () => {
             }}
             gutter={[5, 5]}
           >
+          {listOfImages.map((image)=>
             <Col lg={{ span: 6 }} style={{ height: "100px" }}>
-              <img
-                src={carInterior1}
-                alt=""
-                style={{ objectFit: "cover", width: "100%", height: "100%" }}
-              />
-            </Col>
-            <Col lg={{ span: 6 }} style={{ height: "100px" }}>
-              <img
-                src={carInterior2}
-                alt=""
-                style={{ objectFit: "cover", width: "100%", height: "100%" }}
-              />
-            </Col>
-            <Col lg={{ span: 6 }} style={{ height: "100px" }}>
-              <img
-                src={carInterior3}
-                alt=""
-                style={{ objectFit: "cover", width: "100%", height: "100%" }}
-              />
-            </Col>
-            <Col lg={{ span: 6 }} style={{ height: "100px" }}>
-              <img
-                src={carInterior4}
-                alt=""
-                style={{ objectFit: "cover", width: "100%", height: "100%" }}
-              />
-            </Col>
+            <img
+              onClick={()=>{handleCurrentImg(image.src)}}
+              src={image.src}
+              alt={image.name}
+              style={{ objectFit: "cover", width: "100%", height: "100%",cursor:"pointer" }}
+            />
+            </Col>      
+          )
+          }
+
           </Row>
 
           {/* Car Description */}
@@ -186,6 +177,9 @@ const Hero = () => {
               </div>
             </Col>
           </Row>
+              <Link to={"/cart"}>
+                <Button >Go to Cart</Button>
+              </Link>
         </Row>
       </Col>
     </Row>
